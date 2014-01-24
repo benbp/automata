@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script type="text/javascript" src="raphael-min.js"></script>
+    <script type="text/javascript" src="block-game.js"></script>
+    <style type="text/css">
+        #game_zone {
+            float: left;
+        }
+        #work_zone {
+            float: left;
+        }
+        #draw_button {
+            float: left;
+        }
+        #undo_button {
+            float: right;
+        }
+        #reset_button {
+            float: right;
+        }
+        #buttons {
+        }
+        #button_text {
+            text-align: center;
+            width: 160px;
+            margin-bottom: 15px;
+        }
+        #steps {
+            width: 300px;
+            display: relative;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<!-- =========================== -->
+<body>
+    <div id="game_zone"></div>
+    <div id="work_zone">
+        <div id="draw_zone"></div>
+        <div id="buttons">
+            <div class="button" id="draw_button"></div>
+            <div class="button" id="reset_button"></div>
+            <div class="button" id="undo_button"></div>
+        </div>
+        <div id="button_text">
+            <pre>Run    Undo   Reset</pre>
+        </div>
+        <div id="puzzle_zone"></div>
+        <p>Ben's Best: <span id="bensbest"></span> moves<br />
+        You've made: <span id="yourbest">0</span> moves</p>
+        <p>
+            To change levels, press 0-8.<br />
+            To share your steps on a level with me, press p<br />
+        </p>
+        <div id="steps"></div>
+    </div>
+</body>
+<!-- =========================== -->
+</html>
