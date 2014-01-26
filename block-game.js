@@ -9,7 +9,7 @@ function init_zone(zone_obj, block_size, num_blocks, rounded_rect){
         for(var x = 0; x < this.num_blocks; x++){
             this.blocks.push([]);
             for(var y = 0; y < this.num_blocks; y++){
-                this.blocks[x].push(this.rect(x*this.block_size, y*this.block_size,
+                this.blocks[x].push(this.rect(x*this.block_size+1, y*this.block_size+1,
                                     this.block_size, this.block_size, this.rounded_rect));
                 this.blocks[x][y].val = 0;
                 this.blocks[x][y].attr({"fill": blank_fill, "stroke": stroke});
@@ -181,7 +181,8 @@ function create_game(size, lvl, levels){
     button_height = size/20;
     document.getElementById('game_zone').style['margin-right']=margin;
     document.getElementById('draw_zone').style['margin-top']=margin;
-    document.getElementById('puzzle_zone').style['margin-bottom']=margin;
+    document.getElementById('draw_zone').style['margin-bottom']=margin;
+    document.getElementById('puzzle_zone').style['margin-top']=margin;
     buttons = document.getElementsByClassName('button');
     for(var i = 0; i < length; i++){
         buttons[i].style.width=button_width;
@@ -214,9 +215,9 @@ function create_game(size, lvl, levels){
     var undos = [];
 
     // var zone = new Raphael(document.getElementById('zone'), width, height);
-    var gz = new Raphael(document.getElementById('game_zone'), gz_size, gz_size);
-    var dz = new Raphael(document.getElementById('draw_zone'), dz_size, dz_size);
-    var pz = new Raphael(document.getElementById('puzzle_zone'), pz_size, pz_size);
+    var gz = new Raphael(document.getElementById('game_zone'), gz_size+2, gz_size+2);
+    var dz = new Raphael(document.getElementById('draw_zone'), dz_size+2, dz_size+2);
+    var pz = new Raphael(document.getElementById('puzzle_zone'), pz_size+2, pz_size+2);
     var db = new Raphael(document.getElementById('draw_button'), db_width, db_height);
     var ub = new Raphael(document.getElementById('undo_button'), ub_width, ub_height);
     var rb = new Raphael(document.getElementById('reset_button'), rb_width, ub_height);

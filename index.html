@@ -18,9 +18,9 @@
         #reset_button {
             float: right;
         }
-        #buttons {
-            margin-bottom: 15px;
-            user-select: none;
+        #select_text {
+            float: left;
+            margin-right: 10px;
         }
         #steps {
             width: 300px;
@@ -42,6 +42,7 @@
         <div id="puzzle_zone"></div>
         <p>Best Solution: <span id="best_solution"></span> moves<br />
         You've made: <span id="yourbest">0</span> moves</p>
+        <span id="select_text">Select Level: </span>
         <select id="level_selector">
             <option>Level 1</option>
             <option>Level 2</option>
@@ -55,5 +56,4 @@
         </select>
     </div>
 </body>
-<!-- =========================== -->
 </html>
