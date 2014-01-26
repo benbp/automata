@@ -162,7 +162,7 @@ function push_undo(undos, gz, dz){
 
 function set_start(gz, pz, lvl, active_fill){
     document.getElementById('yourbest').innerHTML = 0;
-    document.getElementById('bensbest').innerHTML = lvl.bensbest;
+    document.getElementById('best_solution').innerHTML = lvl.best_solution;
     gz.clear_blocks();
     pz.clear_blocks();
     for(var i = 0; i < lvl.game_positions.length; i++){
@@ -252,7 +252,6 @@ function create_game(size, lvl, levels){
     pz.init_blocks();
     dz.init_drawing();
     db.button = db.rect(0, 0, db_width, db_height, button_round).attr({"fill": "#777"});
-    //db.text = db.text(button_height/2, button_height/2, "Run").attr({'text-anchor': 'start'});
     db.button.mousedown(
         function(){
             run_pattern(dz, gz, undos);
@@ -275,24 +274,11 @@ function create_game(size, lvl, levels){
     );
     set_start(gz, pz, lvl, active_fill);
 
-    // developer, for recording puzzles
-    document.onkeydown = function(e){
-        if(e.keyCode == 80){
-            push_undo(undos, gz, dz);
-            log = {game_start: lvl.game_positions, 
-                    goal_start: lvl.goal_positions,
-                    steps: undos,
-                    num_steps: undos.length,
-            }
-            console.log(JSON.stringify(log));
-            document.getElementById('steps').innerHTML = "<b>copy this text and e-mail to me<br />ignore the num_steps number, it's wrong</b><br />" + JSON.stringify(log)
-        }
-        else if(e.keyCode >= 48 && e.keyCode <= 57){
-            undos = [];
-            lvl = levels[e.keyCode-48];
-            dz.clear_blocks();
-            set_start(gz, pz, lvl, active_fill, blank_fill);
-        }
+    document.getElementById("level_selector").onchange = function() {
+        undos = [];
+        lvl = levels[this.selectedIndex];
+        dz.clear_blocks();
+        set_start(gz, pz, lvl, active_fill, blank_fill);
     }
 }
 
@@ -309,7 +295,7 @@ levels[0].goal_positions = [
               [2, 2],
         [1, 3],     [3, 3]
     ];
-levels[0].bensbest = 1;
+levels[0].best_solution = 1;
 levels[1].game_positions = [
         [0, 0],                 [4, 0],
         [0, 1],                 [4, 1],
@@ -324,7 +310,7 @@ levels[1].goal_positions = [
                 [1, 3], [3, 3],
         [0, 4], [1, 4], [3, 4], [4, 4]
     ];
-levels[1].bensbest = 2;
+levels[1].best_solution = 2;
 levels[2].game_positions = [
         [1, 1],
             [2, 2],
@@ -335,7 +321,7 @@ levels[2].goal_positions = [
             [2, 2],
         [3, 1]
     ];
-levels[2].bensbest = 3;
+levels[2].best_solution = 3;
 levels[3].game_positions = [
     [0, 0], [1, 0], [2, 0], [3, 0], [4, 0],
         [1, 1],         [3, 1],
@@ -346,21 +332,21 @@ levels[3].goal_positions = [
               [1, 3],     [3, 3],
     [0, 4], [1, 4], [2, 4], [3, 4], [4, 4]
 ];
-levels[3].bensbest = 8;
+levels[3].best_solution = 8;
 levels[4].game_positions = [
     [0,2],[0,4],[1,1],[2,0],[2,2],[2,4],[3,3],[4,0],[4,2]
 ];
 levels[4].goal_positions = [
     [0,0],[0,2],[1,3],[2,0],[2,2],[2,4],[3,1],[4,2],[4,4]
 ];
-levels[4].bensbest = 4;
+levels[4].best_solution = 4;
 levels[5].game_positions = [
     [0,1],[0,3],[1,2],[2,2],[3,2],[4,1],[4,3]
 ];
 levels[5].goal_positions = [
     [1,1],[1,3],[3,1],[3,3]
 ];
-levels[5].bensbest = 2;
+levels[5].best_solution = 2;
 levels[6].game_positions = [
     [0, 0],                 [4, 0],
     [0, 1],                 [4, 1],
@@ -371,21 +357,21 @@ levels[6].game_positions = [
 levels[6].goal_positions = [
     [0,0],[0,1],[0,3],[0,4],[1,0],[1,3],[3,0],[3,3],[4,0],[4,1],[4,3],[4,4]
 ];
-levels[6].bensbest = 2;
+levels[6].best_solution = 2;
 levels[7].game_positions = [
     [2, 2]
 ];
 levels[7].goal_positions = [
     [0,0],[0,1],[0,3],[0,4],[1,0],[1,1],[1,3],[1,4],[3,0],[3,1],[3,3],[3,4],[4,0],[4,1],[4,3],[4,4]
 ];
-levels[7].bensbest = 2;
+levels[7].best_solution = 2;
 levels[8].game_positions = [
     [2, 2]
 ];
 levels[8].goal_positions = [
     [0,0],[0,1],[0,3],[0,4],[1,0],[1,1],[1,3],[1,4],[2,2],[3,0],[3,1],[3,3],[3,4],[4,0],[4,1],[4,3],[4,4]
 ];
-levels[8].bensbest = 3;
+levels[8].best_solution = 3;
 
 
 window.onload = function(){
