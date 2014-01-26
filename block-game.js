@@ -139,6 +139,7 @@ function run_pattern(dz, gz, undos){
 }
 
 function push_undo(undos, gz, dz){
+    console.log(JSON.stringify(undos))
     update(gz);
 
     var gz_snapshot = [];
@@ -314,7 +315,8 @@ function create_game(size, lvl, levels){
 }
 
 levels = {};
-for(var i = 0; i < 10; i++){
+num_levels = 11;
+for(var i = 0; i < num_levels; i++){
     levels[i] = {};
 }
 
@@ -403,7 +405,36 @@ levels[8].goal_positions = [
     [0,0],[0,1],[0,3],[0,4],[1,0],[1,1],[1,3],[1,4],[2,2],[3,0],[3,1],[3,3],[3,4],[4,0],[4,1],[4,3],[4,4]
 ];
 levels[8].best_solution = 3;
-
+levels[9].game_positions = [
+    
+      [1, 1],               [4, 1],
+              [2, 2],
+                     [3, 3],
+                            [4, 4],
+];
+levels[9].goal_positions = [
+              [2, 0],
+      
+[0, 2],                     [4, 2],
+                            
+              [2, 4],
+];
+levels[9].best_solution = 6;
+levels[10].game_positions = [
+    
+      [1, 1],               [4, 1],
+              [2, 2],
+                     [3, 3],
+                            [4, 4],
+];
+levels[10].goal_positions = [
+              [2, 0],
+       [1, 1],       [3, 1],
+[0, 2],       [2, 2],       [4, 2],
+       [1, 3],       [3, 3],
+[0, 4],                     [4, 4],
+];
+levels[10].best_solution = 4;
 
 window.onload = function(){
     if(window.innerHeight < window.innerWidth){
