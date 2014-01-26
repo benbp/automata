@@ -252,20 +252,50 @@ function create_game(size, lvl, levels){
     pz.init_blocks();
     dz.init_drawing();
     db.button = db.rect(0, 0, db_width, db_height, button_round).attr({"fill": "#777"});
+    db.txt = db.text(db_width/2, db_height/2, "Run").attr({
+        "font-size": "12px",
+        "font-weight": "bold",
+    });
     db.button.mousedown(
         function(){
             run_pattern(dz, gz, undos);
             update(gz);
         }
     );
+    db.txt.mousedown(
+        function(){
+            run_pattern(dz, gz, undos);
+            update(gz);
+        }
+    );
     ub.button = ub.rect(0, 0, ub_width, ub_height, button_round).attr({"fill": "088"});
+    ub.txt = ub.text(ub_width/2, ub_height/2, "Undo").attr({
+        "font-size": "12px",
+        "font-weight": "bold",
+    });
     ub.button.mousedown(
         function(){
             undo(undos, gz, dz);
         }
     );
+    ub.txt.mousedown(
+        function(){
+            undo(undos, gz, dz);
+        }
+    );
     rb.button = rb.rect(0, 0, rb_width, rb_height, button_round).attr({"fill": "922"});
+    rb.txt = rb.text(rb_width/2, rb_height/2, "Reset").attr({
+        "font-size": "12px",
+        "font-weight": "bold",
+    });
     rb.button.mousedown(
+        function(){
+            undos = [{gz: lvl.game_positions, dz: []}];
+            document.getElementById("yourbest").innerHTML = 0;
+            undo(undos, gz, dz);
+        }
+    );
+    rb.txt.mousedown(
         function(){
             undos = [{gz: lvl.game_positions, dz: []}];
             document.getElementById("yourbest").innerHTML = 0;
