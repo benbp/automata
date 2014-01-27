@@ -449,7 +449,7 @@ levels = [
                                     
                       [2, 4],
         ],
-        "best_solution": 6
+        "best_solution": 5
     },
     // Level 11
     {
